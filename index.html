@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarPool - Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Create Account</h2>
+        <form id="registrationForm">
+            <input type="text" id="userName" placeholder="Full Name" required>
+            <input type="email" id="userEmail" placeholder="Email Address" required>
+            
+            <select id="userGender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <input type="number" id="userAge" placeholder="Age" required>
+            
+            <!-- Password Field with our specific rules -->
+            <input type="password" id="userPassword" placeholder="Password (Capital first, 1 special char)" required>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+        <p id="message" style="color: red;"></p>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
