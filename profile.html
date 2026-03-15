@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>👤 My Profile</h1>
+    </header>
+
+    <div class="profile-container">
+
+        <div class="profile-card">
+
+            <span class="material-icons profile-icon">account_circle</span>
+
+            <h2 id="username"></h2>
+
+            <div class="info">
+                <p><b>Email:</b> <span id="email"></span></p>
+                <p><b>Phone:</b> <span id="phone"></span></p>
+                <p><b>Role:</b> <span id="role"></span></p>
+                <p><b>License Number:</b> <span id="license"></span></p>
+                <p><b>Vehicle:</b> <span id="vehicle"></span></p>
+                <p><b>Pickup Location:</b> <span id="location"></span></p>
+                <p><b>Rating:</b> ⭐ <span id="rating"></span></p>
+                <p><b>Total Rides:</b> <span id="rides"></span></p>
+            </div>
+
+            <button class="edit-btn" onclick="editProfile()">
+                ✏ Edit Profile
+            </button>
+
+            <button class="back-btn" onclick="location.href='dashboard.html'">
+                ← Back to Dashboard
+            </button>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let user = JSON.parse(localStorage.getItem("user"));
+
+        if (user) {
+            document.getElementById("username").innerText = user.username;
+            document.getElementById("email").innerText = user.email;
+            document.getElementById("phone").innerText = user.phone;
+            document.getElementById("role").innerText = user.role;
+            document.getElementById("license").innerText = user.license;
+            document.getElementById("vehicle").innerText = user.vehicle;
+            document.getElementById("location").innerText = user.location;
+            document.getElementById("rating").innerText = user.rating;
+            document.getElementById("rides").innerText = user.rides;
+        }
+
+        function editProfile() {
+            window.location.href = "edit-profile.html";
+        }
+
+    </script>
+
+</body>
+
+</html>
