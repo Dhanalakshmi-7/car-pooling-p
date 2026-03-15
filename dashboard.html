@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Car Pooling Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <h1>🚗 Car Pooling Dashboard</h1>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </header>
+
+    <div class="dashboard">
+
+        <div class="card" onclick="location.href='offer.html'">
+            <span class="material-icons">directions_car</span>
+            <h2>Offer a Ride</h2>
+            <p>Share your ride with others and save fuel.</p>
+        </div>
+
+        <div class="card" onclick="location.href='find.html'">
+            <span class="material-icons">search</span>
+            <h2>Find a Ride</h2>
+            <p>Search for available rides near you.</p>
+        </div>
+
+        <div class="card" onclick="location.href='profile.html'">
+            <span class="material-icons">person</span>
+            <h2>My Profile</h2>
+            <p>View and manage your account details.</p>
+        </div>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>
