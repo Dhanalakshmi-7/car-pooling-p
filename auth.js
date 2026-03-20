@@ -1,31 +1,51 @@
-// --- Password Visibility ---
+// --- Fixed Password Visibility Logic ---
 function togglePass(inputId, btnId) {
     const input = document.getElementById(inputId);
     const btn = document.getElementById(btnId);
+    
     if (btn && input) {
-        btn.onclick = () => {
-            const type = input.type === 'password' ? 'text' : 'password';
-            input.type = type;
-            btn.innerText = type === 'password' ? '👁️' : '🙈';
-        };
+        btn.addEventListener('click', function() {
+            // Check current type and flip it
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.innerText = '🙈'; // Eye closed icon
+            } else {
+                input.type = 'password';
+                btn.innerText = '👁️'; // Eye open icon
+            }
+        });
     }
 }
+
+// Re-initialize for both pages correctly
 togglePass('userPassword', 'toggleRegPassword');
 togglePass('loginPassword', 'toggleLoginPassword');
+
+/* Keep your Registration and Login Submit Logic below this line... */
 
 // --- Real-time Rule Check ---
 const regPass = document.getElementById('userPassword');
 if (regPass) {
     regPass.oninput = () => {
         const val = regPass.value;
-        document.getElementById('hint-cap').className = /^[A-Z]/.test(val) ? 'valid' : 'invalid';
-        document.getElementById('hint-cap').innerText = /^[A-Z]/.test(val) ? '✅ Capital' : '❌ Capital';
         
-        document.getElementById('hint-num').className = /[0-9]/.test(val) ? 'valid' : 'invalid';
-        document.getElementById('hint-num').innerText = /[0-9]/.test(val) ? '✅ Number' : '❌ Number';
+        // Update helper function
+        const updateRule = (id, condition, text) => {
+            const el = document.getElementById(id);
+            if (condition) {
+                el.classList.add('valid');
+                el.classList.remove('invalid');
+                el.innerText = `✅ ${text}`;
+            } else {
+                el.classList.add('invalid');
+                el.classList.remove('valid');
+                el.innerText = `❌ ${text}`;
+            }
+        };
 
-        document.getElementById('hint-spec').className = /[!@#$%^&*]/.test(val) ? 'valid' : 'invalid';
-        document.getElementById('hint-spec').innerText = /[!@#$%^&*]/.test(val) ? '✅ Special' : '❌ Special';
+        updateRule('hint-cap', /^[A-Z]/.test(val), "Capital");
+        updateRule('hint-num', /[0-9]/.test(val), "Number");
+        updateRule('hint-spec', /[!@#$%^&*]/.test(val), "Special");
     };
 }
 

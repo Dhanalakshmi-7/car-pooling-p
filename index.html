@@ -8,11 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="reference-bg">
-    <!-- Decorative Top Accent Bar (matches photo style but no text) -->
-    <header class="top-accent"></header>
+    <!-- Top accent bar removed as requested -->
 
     <div class="content-container">
-        <!-- Minimal Data Card -->
         <div class="data-card">
             <h2 class="form-title">Create Account</h2>
             <form id="registrationForm">
@@ -33,10 +31,11 @@
                     <button type="button" id="toggleRegPassword" class="eye-btn">👁️</button>
                 </div>
                 
-                <div class="rules-box">
-                    <span id="hint-cap">❌ Capital</span>
-                    <span id="hint-num">❌ Number</span>
-                    <span id="hint-spec">❌ Special</span>
+                <!-- Enhanced Password Rules UI -->
+                <div class="rules-container">
+                    <span id="hint-cap" class="rule-badge invalid">❌ Capital</span>
+                    <span id="hint-num" class="rule-badge invalid">❌ Number</span>
+                    <span id="hint-spec" class="rule-badge invalid">❌ Special</span>
                 </div>
 
                 <button type="submit" class="action-btn">SIGN UP</button>
