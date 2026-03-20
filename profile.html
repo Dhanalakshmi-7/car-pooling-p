@@ -1,73 +1,100 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>User Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarPool - My Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Profile Specific Styling */
+        .profile-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+        }
 
-    <!-- Google Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        .profile-card {
+            background: rgba(255, 255, 255, 0.95);
+            width: 450px;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .avatar-circle {
+            width: 100px; height: 100px;
+            background: #3498db;
+            color: white;
+            font-size: 3rem;
+            line-height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            font-weight: 600;
+        }
+
+        .profile-info-grid {
+            text-align: left;
+            margin: 20px 0;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-label { font-weight: 600; color: #3498db; font-size: 0.8rem; text-transform: uppercase; }
+        .info-value { color: #333; font-weight: 400; }
+
+        .profile-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .btn-secondary {
+            background: #95a5a6;
+            flex: 1;
+        }
+    </style>
 </head>
+<body class="profile-bg">
 
-<body>
+    <div class="profile-card">
+        <!-- Initial of Name will appear here -->
+        <div id="userAvatar" class="avatar-circle">U</div>
+        
+        <h2 id="dispName" style="margin-bottom: 5px;">User Name</h2>
+        <p id="dispEmail" style="color: #666; font-size: 0.9rem;">user@example.com</p>
 
-    <header>
-        <h1>👤 My Profile</h1>
-    </header>
-
-    <div class="profile-container">
-
-        <div class="profile-card">
-
-            <span class="material-icons profile-icon">account_circle</span>
-
-            <h2 id="username"></h2>
-
-            <div class="info">
-                <p><b>Email:</b> <span id="email"></span></p>
-                <p><b>Phone:</b> <span id="phone"></span></p>
-                <p><b>Role:</b> <span id="role"></span></p>
-                <p><b>License Number:</b> <span id="license"></span></p>
-                <p><b>Vehicle:</b> <span id="vehicle"></span></p>
-                <p><b>Pickup Location:</b> <span id="location"></span></p>
-                <p><b>Rating:</b> ⭐ <span id="rating"></span></p>
-                <p><b>Total Rides:</b> <span id="rides"></span></p>
+        <div class="profile-info-grid">
+            <div class="info-item">
+                <span class="info-label">Gender:</span>
+                <span id="dispGender" class="info-value">Not Specified</span>
             </div>
-
-            <button class="edit-btn" onclick="editProfile()">
-                ✏ Edit Profile
-            </button>
-
-            <button class="back-btn" onclick="location.href='dashboard.html'">
-                ← Back to Dashboard
-            </button>
-
+            <div class="info-item">
+                <span class="info-label">Age:</span>
+                <span id="dispAge" class="info-value">--</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Account Status:</span>
+                <span class="info-value" style="color: #2ecc71;">✓ Verified</span>
+            </div>
         </div>
 
+        <div class="profile-actions">
+            <button class="action-btn btn-secondary" onclick="location.href='dashboard.html'">Back</button>
+            <button class="logout-btn" style="flex: 1;" onclick="logout()">Logout</button>
+        </div>
     </div>
 
-    <script>
-
-        let user = JSON.parse(localStorage.getItem("user"));
-
-        if (user) {
-            document.getElementById("username").innerText = user.username;
-            document.getElementById("email").innerText = user.email;
-            document.getElementById("phone").innerText = user.phone;
-            document.getElementById("role").innerText = user.role;
-            document.getElementById("license").innerText = user.license;
-            document.getElementById("vehicle").innerText = user.vehicle;
-            document.getElementById("location").innerText = user.location;
-            document.getElementById("rating").innerText = user.rating;
-            document.getElementById("rides").innerText = user.rides;
-        }
-
-        function editProfile() {
-            window.location.href = "edit-profile.html";
-        }
-
-    </script>
-
+    <script src="profile.js"></script>
 </body>
-
 </html>

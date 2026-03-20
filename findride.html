@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarPool - Find a Ride</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific background for Find Ride to resemble but not copy Offer Ride */
+        .find-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                              url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 15px;
+            align-items: end;
+        }
+
+        .search-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .search-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .results-section {
+            max-width: 800px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            min-height: 200px;
+        }
+
+        .ride-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 5px solid #007bff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .book-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="find-bg">
+    <header class="dashboard-header" style="background: #007bff; color: white; padding: 20px; text-align: center;">
+        <h1 style="margin:0;">CarPool</h1>
+        <p style="margin:5px 0 0 0;">Find your perfect journey</p>
+    </header>
+
+    <!-- Search Section (Resembles the Quote area but functional) -->
+    <div class="search-container">
+        <div class="search-grid">
+            <div class="search-group">
+                <label>From</label>
+                <input type="text" id="fromLoc" placeholder="Origin">
+            </div>
+            <div class="search-group">
+                <label>To</label>
+                <input type="text" id="toLoc" placeholder="Destination">
+            </div>
+            <div class="search-group">
+                <label>Date</label>
+                <input type="date" id="travelDate">
+            </div>
+            <button class="action-btn" onclick="searchRides()" style="margin-bottom: 0;">SEARCH</button>
+        </div>
+    </div>
+
+    <!-- Results Section (Resembles the Available Rides area) -->
+    <div class="results-section">
+        <h2 style="text-align: center; color: #333;">Available Matches</h2>
+        <div id="rideResults">
+            <p style="text-align: center; color: #777;">Enter details above to find available rides.</p>
+        </div>
+    </div>
+
+    <script src="findride.js"></script>
+</body>
+</html>
