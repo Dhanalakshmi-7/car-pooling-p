@@ -7,71 +7,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Profile Specific Styling */
         .profile-bg {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                         url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1920');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
+            background-size: cover; background-position: center; height: 100vh;
             display: flex; justify-content: center; align-items: center;
         }
-
         .profile-card {
-            background: rgba(255, 255, 255, 0.95);
-            width: 450px;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.95); width: 450px; padding: 40px;
+            border-radius: 20px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
-
         .avatar-circle {
-            width: 100px; height: 100px;
-            background: #3498db;
-            color: white;
-            font-size: 3rem;
-            line-height: 100px;
-            border-radius: 50%;
-            margin: 0 auto 20px auto;
-            font-weight: 600;
+            width: 100px; height: 100px; background: #3498db; color: white;
+            font-size: 3rem; line-height: 100px; border-radius: 50%;
+            margin: 0 auto 20px auto; font-weight: 600;
         }
-
-        .profile-info-grid {
-            text-align: left;
-            margin: 20px 0;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-        }
-
-        .info-item {
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-        }
-
+        .profile-info-grid { text-align: left; margin: 20px 0; border-top: 1px solid #eee; padding-top: 20px; }
+        .info-item { margin-bottom: 15px; display: flex; justify-content: space-between; }
         .info-label { font-weight: 600; color: #3498db; font-size: 0.8rem; text-transform: uppercase; }
-        .info-value { color: #333; font-weight: 400; }
+        .info-value { color: #333; }
 
-        .profile-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 25px;
-        }
-
-        .btn-secondary {
-            background: #95a5a6;
-            flex: 1;
-        }
+        .profile-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 25px; }
+        .edit-btn { background: #f39c12; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; grid-column: span 2; font-weight: 600; margin-bottom: 5px;}
+        .edit-btn:hover { background: #e67e22; }
     </style>
 </head>
 <body class="profile-bg">
 
     <div class="profile-card">
-        <!-- Initial of Name will appear here -->
         <div id="userAvatar" class="avatar-circle">U</div>
-        
-        <h2 id="dispName" style="margin-bottom: 5px;">User Name</h2>
+        <h2 id="dispName">User Name</h2>
         <p id="dispEmail" style="color: #666; font-size: 0.9rem;">user@example.com</p>
 
         <div class="profile-info-grid">
@@ -84,16 +49,59 @@
                 <span id="dispAge" class="info-value">--</span>
             </div>
             <div class="info-item">
-                <span class="info-label">Account Status:</span>
-                <span class="info-value" style="color: #2ecc71;">✓ Verified</span>
+                <span class="info-label">Status:</span>
+                <span class="info-value" style="color: #2ecc71;">✓ Verified Member</span>
             </div>
         </div>
 
         <div class="profile-actions">
-            <button class="action-btn btn-secondary" onclick="location.href='dashboard.html'">Back</button>
-            <button class="logout-btn" style="flex: 1;" onclick="logout()">Logout</button>
+            <button class="edit-btn" onclick="openEditModal()">Edit Profile</button>
+            <button class="action-btn" style="background: #95a5a6;" onclick="location.href='dashboard.html'">Back</button>
+            <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
     </div>
+
+<!-- Edit Profile Modal -->
+<div id="editProfileModal" class="modal">
+    <div class="modal-content profile-edit-card">
+        <span class="close-btn" onclick="closeEditModal()">&times;</span>
+        
+        <div class="modal-header">
+            <h2 class="form-title">Update Profile</h2>
+            <p style="font-size: 0.8rem; color: #777;">Keep your information up to date</p>
+        </div>
+
+        <form id="editProfileForm" class="styled-form">
+            <!-- Name Group -->
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" id="editName" placeholder="Enter your name" required>
+            </div>
+
+            <!-- Gender & Age Row -->
+            <div class="form-row-grid">
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select id="editGender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" id="editAge" placeholder="21">
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="modal-footer">
+                <button type="submit" class="action-btn save-btn">SAVE CHANGES</button>
+            </div>
+        </form>
+    </div>
+</div>
+  
 
     <script src="profile.js"></script>
 </body>

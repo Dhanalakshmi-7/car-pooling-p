@@ -1,45 +1,47 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Pooling Dashboard</title>
     <link rel="stylesheet" href="style.css">
-
     <!-- Google Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="dashboard-body">
 
-    <header>
-        <h1>🚗 Car Pooling Dashboard</h1>
-        <button class="logout-btn" onclick="login.html">Logout</button>
+    <!-- Header with Flexbox for Right-Aligned Logout -->
+    <header class="dashboard-header">
+        <h1>🚗 CarPool Dashboard</h1>
+        <!-- Fixed the logout functionality -->
+        <button class="logout-btn" onclick="window.location.href='login.html'">Logout</button>
     </header>
 
     <div class="dashboard">
-
+        <!-- Card 1: Offer -->
         <div class="card" onclick="location.href='offerride.html'">
             <span class="material-icons">directions_car</span>
             <h2>Offer a Ride</h2>
             <p>Share your ride with others and save fuel.</p>
         </div>
 
+        <!-- Card 2: Find -->
         <div class="card" onclick="location.href='findride.html'">
             <span class="material-icons">search</span>
             <h2>Find a Ride</h2>
             <p>Search for available rides near you.</p>
         </div>
 
+        <!-- Card 3: Profile -->
         <div class="card" onclick="location.href='profile.html'">
             <span class="material-icons">person</span>
             <h2>My Profile</h2>
             <p>View and manage your account details.</p>
         </div>
-
     </div>
 
     <script src="dashboard.js"></script>
-
 </body>
-
 </html>

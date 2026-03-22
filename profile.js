@@ -1,30 +1,17 @@
-window.onload = function() {
-    // 1. Get the stored user data (Saved by Member 1 during registration)
+// Function to open the modal
+function openEditModal() {
     const userData = JSON.parse(localStorage.getItem('userAccount'));
+    
+    // Fill the inputs with current data before opening
+    document.getElementById('editName').value = userData.name;
+    document.getElementById('editGender').value = userData.gender || "male";
+    document.getElementById('editAge').value = userData.age || "";
 
-    if (userData) {
-        // 2. Fill the Text details
-        document.getElementById('dispName').innerText = userData.name;
-        document.getElementById('dispEmail').innerText = userData.email;
-        document.getElementById('dispGender').innerText = userData.gender || "Not Specified";
-        document.getElementById('dispAge').innerText = userData.age || "--";
+    // Show the modal
+    document.getElementById('editProfileModal').style.display = "block";
+}
 
-        // 3. Create a dynamic avatar (First letter of name)
-        const firstLetter = userData.name.charAt(0).toUpperCase();
-        document.getElementById('userAvatar').innerText = firstLetter;
-    } else {
-        // If no user found, force them back to login
-        alert("Session expired. Please login again.");
-        window.location.href = "login.html";
-    }
-};
-
-// --- Your Logout Function ---
-function logout() {
-    // Clear login status (Member 1 logic)
-    localStorage.removeItem("loggedIn");
-    // Optional: Keep the account data so they can log back in, 
-    // but clear the current session.
-    alert("Logging out...");
-    window.location.href = "login.html";
+// Function to close the modal
+function closeEditModal() {
+    document.getElementById('editProfileModal').style.display = "none";
 }
